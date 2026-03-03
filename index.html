@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ahmi'X Server</title>
+  <!-- Viewport for mobile scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #8b0000, #4b0082); /* reddish purple gradient */
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      padding: 15px;
+      font-size: 1.8em;
+      font-weight: bold;
+      color: #fff; /* white bold text */
+      text-shadow: 2px 2px 6px rgba(255,0,0,0.6);
+    }
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 15px;
+    }
+    .image-container img {
+      width: 100%;
+      max-width: 500px; /* cap size on larger screens */
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 68, 68, 0.7);
+    }
+    .buttons {
+      display: flex;
+      flex-direction: column; /* vertical list */
+      align-items: center;
+      gap: 12px;
+      margin: 20px;
+    }
+    .buttons a {
+      display: block;
+      width: 80%; /* relative width for mobile */
+      max-width: 300px;
+      padding: 12px;
+      background: #ff4444;
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: #cc0000;
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+    .logout {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    /* Extra tweaks for very small screens */
+    @media (max-width: 400px) {
+      header {
+        font-size: 1.5em;
+      }
+      .buttons a {
+        font-size: 1em;
+        padding: 10px;
+      }
+    }
+  </style>
+  <script>
+    // Redirect to login if not logged in
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+  <header>Ahmi'X Server</header>
+
+  <div class="image-container">
+    <img src="https://i.ibb.co/39Xjr81M/b4-L4y-N3t-Q5-GOq-Qd-JQu1r-w.webp"
+         alt="Anime Character" border="0" />
+  </div>
+
+  <div class="buttons">
+    <a href="token.html">X Token</a>
+    <a href="convo.html">X Convo</a>
+    <a href="state.html">X State</a>
+  </div>
+
+  <div class="logout" onclick="logout()">Logout</div>
+
+  <footer>
+    Made by Ahmer Awan
+  </footer>
+</body>
+</html>
