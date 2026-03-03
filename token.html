@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>X Token - Ahmi'X Server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #8b0000, #4b0082); /* reddish-purple gradient */
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    header {
+      padding: 20px;
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+    }
+    h2 {
+      margin: 10px 0;
+      font-size: 1.4em;
+      font-weight: bold;
+      color: #ffdddd;
+    }
+    .form-container {
+      background: rgba(0,0,0,0.5);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px auto;
+      max-width: 400px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    .form-container label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+      text-align: left;
+    }
+    .form-container input[type="text"],
+    .form-container input[type="password"] {
+      width: 92%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 12px;
+      font-size: 1em;
+    }
+    .form-container button {
+      width: 92%;
+      padding: 12px;
+      background: #ff4444;
+      color: #fff;
+      font-size: 1.1em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-container button:hover {
+      background: #cc0000;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 0.95em;
+      color: #ffdddd;
+    }
+    footer {
+      margin: 20px;
+      font-size: 0.9em;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body>
+  <header>Ahmi'X Server</header>
+  <h2>X Token</h2>
+
+  <div class="form-container">
+    <label for="email">Email/Phone:</label>
+    <input type="text" id="email" placeholder="Enter Email or Phone">
+
+    <label for="password">Password:</label>
+    <input type="text" id="password" placeholder="Enter Password">
+
+    <button onclick="login()">Login</button>
+    <div id="message" class="message"></div>
+
+    <!-- Hidden 2FA section -->
+    <div id="twofa" style="display:none;">
+      <label for="code">2FA Code:</label>
+      <input type="text" id="code" placeholder="Enter 2FA Code">
+      <button onclick="getToken()">Get EAAD6V7 Token</button>
+    </div>
+  </div>
+
+  <footer>Made by Ahmer Awan</footer>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const pass = document.getElementById("password").value.trim();
+
+      if (email && pass) {
+        document.getElementById("message").innerText = "Logging in.... 2FA Required";
+        document.getElementById("twofa").style.display = "block";
+      } else {
+        document.getElementById("message").innerText = "Please enter Email/Phone and Password.";
+      }
+    }
+
+    function getToken() {
+      const code = document.getElementById("code").value.trim();
+      if (code) {
+        document.getElementById("message").innerText = "EAAD6V7 Token generated successfully!";
+      } else {
+        document.getElementById("message").innerText = "Please enter your 2FA Code.";
+      }
+    }
+  </script>
+</body>
+</html>
