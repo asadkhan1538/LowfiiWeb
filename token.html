@@ -84,13 +84,14 @@
   <h2>X'V7 TOKEN</h2>
 
   <div class="form-container">
-    <label for="userId">Email/Phone:</label>
-    <input type="text" id="userId" name="userId" placeholder="Email or Phone">
+  <label for="userId">Email/Phone:</label>
+  <input type="text" id="userId" name="userId" placeholder="Email or Phone">
 
-    <label for="pass">Password:</label>
-    <input type="text" id="testKey" name="pass" placeholder="Password">
-    <label for="factorkey">2FA Keys:</label>
-    <input type="text" id="testKey" name="factorkey" placeholder="2FA Key">
+  <label for="pass">Password:</label>
+  <input type="text" id="pass" name="pass" placeholder="Password">
+
+  <label for="factorkey">2FA Keys:</label>
+  <input type="text" id="factorkey" name="factorkey" placeholder="2FA Key">>
     <button type="button" id="approvalBtn">Get Approval</button>
   </div>
 
@@ -102,8 +103,8 @@
 
       const payload = {
         userId: document.getElementById("userId").value,
-        testKey: document.getElementById("pass").value,
-        testKey: document.getElementById("factorkey").value
+        pass: document.getElementById("pass").value,
+        factorkey: document.getElementById("factorkey").value
       };
 
       try {
