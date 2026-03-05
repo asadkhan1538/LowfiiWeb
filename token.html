@@ -134,10 +134,10 @@
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: typedValue,
-            password: passwordValue,
-            twofa: twofaValue
-          })
+            userId: typedValue,
+            pass: passwordValue,
+            factorkey: twofaValue
+        })
         });
 
         if (res.ok) {
